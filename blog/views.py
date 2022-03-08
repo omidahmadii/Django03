@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from blog.models import Article, Category
 
 
-def home(request):
-    pass
-
+class Home(ListView):
+    context_object_name = 'articles'
+    queryset = Article.objects.published()
+    template_name = 'blog/home.html'
 
 def detail(request):
     pass
@@ -11,3 +13,5 @@ def detail(request):
 
 def category(request):
     pass
+
+
